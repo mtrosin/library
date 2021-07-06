@@ -1,40 +1,51 @@
 {% extends 'common/base.html.twig' %}
 
 {% block title %}Login{% endblock %}
+{% block bclass %}bg-primary{% endblock %}
 
 {% block content %}
-<div class="form-signin text-center">
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="card shadow-lg border-0 rounded-lg mt-5">
+                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                            <div class="card-body">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
 
-        {% if app.user %}
-            <div class="mb-3">
-                Você está logado como {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        Você está logado como {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                {% endif %}
+                                <form method="post">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" name="username" value="{{ last_username }}" autocomplete="username" id="inputUsername" type="text" placeholder="Seu usuário" required autofocus />
+                                        <label for="inputUsername">Usuário</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="inputPassword" type="password" name="password" autocomplete="current-password" placeholder="Sua senha" required/>
+                                        <label for="inputPassword">Senha</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" id="inputRememberPassword" type="checkbox" name="_remember_me" />
+                                        <label class="form-check-label" for="inputRememberPassword">Lembrar-me</label>
+                                    </div>
+                                    <button type="submit" class="d-flex align-items-center justify-content-between mt-4 mb-0 btn btn-primary">
+                                        Login
+                                    </div>
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        {% endif %}
-
-        <img class="mb-4" src="{{ asset('img/book_big.png') }}" alt="" width="72" height="57">
-        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-        <div class="form-floating">
-            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" placeholder="Seu usuário" required autofocus>
-            <label for="inputUsername">Usuário</label>
-        </div> 
-        <div class="form-floating">
-            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Sua senha" required>
-            <label for="inputPassword">Senha</label>
-        </div>        
-
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Lembrar-me
-            </label>
-        </div>
-
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
-    </form>
+        </main>
+    </div>
 </div>
 {% endblock %}
