@@ -17,7 +17,7 @@ class BookType extends AbstractType
             ->add('pages')
             ->add('date_add')
             ->add('date_mod')
-            ->add('author_id')
+            ->add('author')
         ;
     }
 
