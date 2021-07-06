@@ -28,12 +28,6 @@ class Book
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $author_id;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $pages;
@@ -47,6 +41,11 @@ class Book
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_mod;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
+     */
+    private $author;
 
     public function getId(): ?int
     {
@@ -73,18 +72,6 @@ class Book
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getAuthorId(): ?Author
-    {
-        return $this->author_id;
-    }
-
-    public function setAuthorId(?Author $author_id): self
-    {
-        $this->author_id = $author_id;
 
         return $this;
     }
@@ -121,6 +108,18 @@ class Book
     public function setDateMod(?\DateTimeInterface $date_mod): self
     {
         $this->date_mod = $date_mod;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
