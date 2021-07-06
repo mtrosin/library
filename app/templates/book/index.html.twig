@@ -1,0 +1,44 @@
+{% extends 'common/base.html.twig' %}
+
+{% block title %}Livros{% endblock %}
+{% block bclass %}sb-nav-fixed{% endblock %}
+
+{% block content %}
+    <h1>Book index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Pages</th>
+                <th>Date_add</th>
+                <th>Date_mod</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.description }}</td>
+                <td>{{ book.pages }}</td>
+                <td>{{ book.dateAdd ? book.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ book.dateMod ? book.dateMod|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">show</a>
+                    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_new') }}">Create new</a>
+{% endblock %}
