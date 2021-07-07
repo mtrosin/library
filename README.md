@@ -44,3 +44,6 @@ A fim de criar as tabelas do banco de dados, rode o seguinte comando a partir do
 ```
 symfony console doctrine:migrations:migrate
 ```
+
+## Uso do sistema
+Após a instalação será possível acessar o projeto via a URL http://localhost:8080, o usuário padrão é admin 123456
