@@ -1,5 +1,5 @@
 # Biblioteca Online
-Este é um pequeno projeto desenvolvido em Symfony 5.3 para testar algumas habilidades.
+Este é um pequeno projeto desenvolvido em Symfony 5.3 com uso de banco de dados MySQL.
 
 A sua principal função é realizar login, permitir a criação de livros e vinculação de autores além de utilizar uma API para mostrar o clima.
 
@@ -46,4 +46,4 @@ symfony console doctrine:migrations:migrate
 ```
 
 ## Uso do sistema
-Após a instalação será possível acessar o projeto via a URL http://localhost:8080, o usuário padrão é admin 123456
+Após a instalação será possível acessar o projeto via a URL http://localhost:8080, o usuário padrão é admin 123456.
