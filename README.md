@@ -1,14 +1,14 @@
 # Biblioteca Online
-Este È um pequeno projeto desenvolvido em Symfony 5.3 com uso de banco de dados MySQL.
+Este √© um pequeno projeto desenvolvido em Symfony 5.3 com uso de banco de dados MySQL.
 
-A sua principal funÁ„o È realizar login, permitir a criaÁ„o de livros e vinculaÁ„o de autores alÈm de utilizar uma API para mostrar o clima.
+A sua principal fun√ß√£o √© realizar login, permitir a cria√ß√£o de livros e vincula√ß√£o de autores al√©m de utilizar uma API para mostrar o clima.
 
 ## Requisitos
 - PHP 7.2.5 e acima.
 - Docker e docker-compose instalados.
 
-## InstalaÁ„o
-Para instalaÁ„o deste projeto siga os seguintes passos: 
+## Instala√ß√£o
+Para instala√ß√£o deste projeto siga os seguintes passos: 
 
 ### 1. Instale e ative o container
 Abra seu terminal e digite:
@@ -17,7 +17,7 @@ Abra seu terminal e digite:
 docker compose build && docker compose up -d
 ```
 
-Aguarde a instalaÁ„o e ativaÁ„o do mesmo.
+Aguarde a instala√ß√£o e ativa√ß√£o do mesmo.
 
 ### 2. Instale os pacotes utilizando composer
 
@@ -26,9 +26,9 @@ Entre dentro do container de PHP criado e rode o seguinte comando:
 ```
 docker exec -it php bash
 ```
-Ou caso vocÍ esteja utilizando Windows utilize o winpty:
+Ou caso voc√™ esteja utilizando Windows utilize o winpty:
 ```
-winpty docker exec -it php bash if window
+winpty docker exec -it php bash
 ```
 
 Dentro do container, execute o comando: 
@@ -36,7 +36,7 @@ Dentro do container, execute o comando:
 composer build
 ```
 
-Aguarde a instalaÁ„o dos pacotes.
+Aguarde a instala√ß√£o dos pacotes.
 
 ### 3. Execute as migrations
 A fim de criar as tabelas do banco de dados, rode o seguinte comando a partir do container de PHP:
@@ -46,4 +46,4 @@ symfony console doctrine:migrations:migrate
 ```
 
 ## Uso do sistema
-ApÛs a instalaÁ„o ser· possÌvel acessar o projeto via a URL http://localhost:8080, o usu·rio padr„o È admin 123456.
+Ap√≥s a instala√ß√£o ser√° poss√≠vel acessar o projeto via a URL http://localhost:8080, o usu√°rio padr√£o √© admin 123456.
