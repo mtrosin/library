@@ -9,14 +9,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\Weather;
 
 #[Route('/author')]
 class AuthorController extends AbstractController
 {
+    public function __construct(Weather $weather)
+    {
+        $this->weather = $weather->get();
+    }
+    
     #[Route('/', name: 'author_index', methods: ['GET'])]
     public function index(AuthorRepository $authorRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->addFlash('weather', $this->weather);
 
         return $this->render('author/index.html.twig', [
             'authors' => $authorRepository->findAll(),
@@ -27,6 +34,7 @@ class AuthorController extends AbstractController
     public function new(Request $request): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->addFlash('weather', $this->weather);
 
         $author = new Author();
         $form = $this->createForm(AuthorType::class, $author);
@@ -50,6 +58,7 @@ class AuthorController extends AbstractController
     public function show(Author $author): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->addFlash('weather', $this->weather);
 
         return $this->render('author/show.html.twig', [
             'author' => $author,
@@ -60,6 +69,7 @@ class AuthorController extends AbstractController
     public function edit(Request $request, Author $author): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->addFlash('weather', $this->weather);
 
         $form = $this->createForm(AuthorType::class, $author);
         $form->handleRequest($request);
@@ -80,6 +90,7 @@ class AuthorController extends AbstractController
     public function delete(Request $request, Author $author): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->addFlash('weather', $this->weather);
         
         if ($this->isCsrfTokenValid('delete'.$author->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
