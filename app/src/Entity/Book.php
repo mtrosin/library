@@ -114,6 +114,14 @@ class Book
         return $this->date_mod;
     }
 
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setDateModValue(): void
+    {
+        $this->date_mod = new \DateTime("now");
+    }
+
     public function setDateMod(?\DateTimeInterface $date_mod): self
     {
         $this->date_mod = $date_mod;

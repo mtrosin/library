@@ -1,0 +1,46 @@
+
+{% extends 'common/internal.html.twig' %}
+
+{% block title %}Autores{% endblock %}
+{% block bclass %}sb-nav-fixed{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">Autores</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Autores</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Listagem de Autores
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for author in authors %}
+                        <tr>
+                            <td>{{ author.id }}</td>
+                            <td>{{ author.name }}</td>
+                            <td>
+                                <a href="{{ path('author_show', {'id': author.id}) }}">visualizar</a>
+                                <a href="{{ path('author_edit', {'id': author.id}) }}">editar</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">nenhum dado encontrado</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('author_new') }}">Adicionar autor</a>
+        </div>
+    </div>
+{% endblock %}

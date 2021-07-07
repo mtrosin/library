@@ -1,0 +1,23 @@
+{% extends 'common/internal.html.twig' %}
+
+{% block title %}Autor - Adicionar{% endblock %}
+{% block bclass %}sb-nav-fixed{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4">Autores</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">Autores</li>
+        <li class="breadcrumb-item active">Novo</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Adicionar Autor
+        </div>
+        <div class="card-body">
+            {{ include('author/_form.html.twig') }}
+
+            <a href="{{ path('author_index') }}">Voltar para a listagem</a>
+        </div>
+    </div>
+{% endblock %}

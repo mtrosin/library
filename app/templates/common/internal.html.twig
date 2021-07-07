@@ -32,7 +32,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ path('book_index') }}">Autores</a></li>
+                        <li><a class="dropdown-item" href="{{ path('author_index') }}">Autores</a></li>
                         <li><a class="dropdown-item" href="{{ path('book_index') }}">Livros</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a></li>
@@ -46,7 +46,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">MENU</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="{{ path('author_index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Autores
                             </a>
