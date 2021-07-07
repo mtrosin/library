@@ -1,42 +1,59 @@
-<!DOCTYPE html>
+{% extends 'common/internal.html.twig' %}
 
-<title>Book</title>
+{% block title %}Livros - Visualizar{% endblock %}
+{% block bclass %}sb-nav-fixed{% endblock %}
 
-{% block body %}
-    <h1>Book</h1>
+{% block content %}
+    <h1 class="mt-4">Livros</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">Livros</li>
+        <li class="breadcrumb-item">Visualizar</li>
+        <li class="breadcrumb-item active">{{ book.title }}</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Visualizar Livro
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ book.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Título</th>
+                        <td>{{ book.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descrição</th>
+                        <td>{{ book.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Número de Páginas</th>
+                        <td>{{ book.pages }}</td>
+                    </tr>
+                    <tr>
+                        <th>Autor</th>
+                        <td>{{ book.author }}</td>
+                    </tr>
+                    <tr>
+                        <th>Data de adição</th>
+                        <td>{{ book.dateAdd ? book.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Data de modificação</th>
+                        <td>{{ book.dateMod ? book.dateMod|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ book.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ book.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ book.description }}</td>
-            </tr>
-            <tr>
-                <th>Pages</th>
-                <td>{{ book.pages }}</td>
-            </tr>
-            <tr>
-                <th>Date_add</th>
-                <td>{{ book.dateAdd ? book.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date_mod</th>
-                <td>{{ book.dateMod ? book.dateMod|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+            {{ include('book/_delete_form.html.twig') }}
 
-    <a href="{{ path('book_index') }}">back to list</a>
+            <a href="{{ path('book_index') }}">Voltar para a listagem</a>
 
-    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
-
-    {{ include('book/_delete_form.html.twig') }}
+            <a href="{{ path('book_edit', {'id': book.id}) }}">Modificar</a>
+        </div>
+    </div>
 {% endblock %}

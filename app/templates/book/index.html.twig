@@ -1,44 +1,52 @@
-{% extends 'common/base.html.twig' %}
+
+{% extends 'common/internal.html.twig' %}
 
 {% block title %}Livros{% endblock %}
 {% block bclass %}sb-nav-fixed{% endblock %}
 
 {% block content %}
-    <h1>Book index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Pages</th>
-                <th>Date_add</th>
-                <th>Date_mod</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for book in books %}
-            <tr>
-                <td>{{ book.id }}</td>
-                <td>{{ book.title }}</td>
-                <td>{{ book.description }}</td>
-                <td>{{ book.pages }}</td>
-                <td>{{ book.dateAdd ? book.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ book.dateMod ? book.dateMod|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('book_show', {'id': book.id}) }}">show</a>
-                    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('book_new') }}">Create new</a>
+    <h1 class="mt-4">Livros</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Livros</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Listagem de Livros
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Título</th>
+                        <th>Páginas</th>
+                        <th>Adicionado em</th>
+                        <th>Última modificação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in books %}
+                        <tr>
+                            <td>{{ book.id }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.pages }}</td>
+                            <td>{{ book.dateAdd ? book.dateAdd|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ book.dateMod ? book.dateMod|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>
+                                <a href="{{ path('book_show', {'id': book.id}) }}">visualizar</a>
+                                <a href="{{ path('book_edit', {'id': book.id}) }}">editar</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">nenhum dado encontrado</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ path('book_new') }}">Adicionar livro</a>
+        </div>
+    </div>
 {% endblock %}

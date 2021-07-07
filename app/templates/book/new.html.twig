@@ -1,11 +1,23 @@
-<!DOCTYPE html>
+{% extends 'common/internal.html.twig' %}
 
-<title>New Book</title>
+{% block title %}Livros - Adicionar{% endblock %}
+{% block bclass %}sb-nav-fixed{% endblock %}
 
-{% block body %}
-    <h1>Create new Book</h1>
+{% block content %}
+    <h1 class="mt-4">Livros</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">Livros</li>
+        <li class="breadcrumb-item active">Novo</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Adicionar Livro
+        </div>
+        <div class="card-body">
+            {{ include('book/_form.html.twig') }}
 
-    {{ include('book/_form.html.twig') }}
-
-    <a href="{{ path('book_index') }}">back to list</a>
+            <a href="{{ path('book_index') }}">Voltar para a listagem</a>
+        </div>
+    </div>
 {% endblock %}

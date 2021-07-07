@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Book
 {
@@ -91,6 +92,14 @@ class Book
     public function getDateAdd(): ?\DateTimeInterface
     {
         return $this->date_add;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setDateAddValue(): void
+    {
+        $this->date_add = new \DateTime("now");
     }
 
     public function setDateAdd(\DateTimeInterface $date_add): self
