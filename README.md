@@ -1,49 +1,51 @@
-# Biblioteca Online
-Este é um pequeno projeto desenvolvido em Symfony 5.3 com uso de banco de dados MySQL.
+# Online Library
 
-A sua principal função é realizar login, permitir a criação de livros e vinculação de autores além de utilizar uma API para mostrar o clima.
+This is a little project developed using Symfony 5.3 and MySQL database.
+The focus of this project is being able to login, create books, assign authors and use an API to shows the current weather.
 
-## Requisitos
-- PHP 7.2.5 e acima.
-- Docker e docker-compose instalados.
+## Requisitos | Requirements
 
-## Instalação
-Para instalação deste projeto siga os seguintes passos: 
+- Docker, docker-compose.
 
-### 1. Instale e ative o container
-Abra seu terminal e digite:
+## Installation
+
+In order to install this project follow the steps:
+
+### 1. Install and activate the container
+Open your terminal and type:
 
 ```
 docker compose build && docker compose up -d
+
 ```
 
-Aguarde a instalação e ativação do mesmo.
+Wait for the commands to run.
 
-### 2. Instale os pacotes utilizando composer
+### 2. Install the packages with composer
 
-Entre dentro do container de PHP criado e rode o seguinte comando:
+Enter the PHP container and type the following:
 
 ```
 docker exec -it php bash
 ```
-Ou caso você esteja utilizando Windows utilize o winpty:
+In case you are using Windows use this command:
 ```
 winpty docker exec -it php bash
 ```
 
-Dentro do container, execute o comando: 
+When inside the container, use the following command: 
 ```
-composer build
+composer install
 ```
 
-Aguarde a instalação dos pacotes.
+Wait for the installation to complete.
 
-### 3. Execute as migrations
-A fim de criar as tabelas do banco de dados, rode o seguinte comando a partir do container de PHP:
+### 3. Execute the migrations
+In order to create database tables you need to execute the following command from PHP container:
 
 ```
 symfony console doctrine:migrations:migrate
 ```
 
-## Uso do sistema
-Após a instalação será possível acessar o projeto via a URL http://localhost:8080, o usuário padrão é admin 123456.
+## Using the application
+After the installation you can access the project by the URL http://localhost:8080, default user is admin 123456.
